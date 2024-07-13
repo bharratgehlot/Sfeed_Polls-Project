@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thank You</title>
+    <title>Student feedback app by SurveyParrots - Thank You</title>
 
     <style>
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #eb8787;
+    background-color: #9bd64f;
     margin: 0;
     padding: 0;
     display: flex;
@@ -62,7 +62,7 @@ input[type="radio"] {
 }
 
 button {
-    background-color: #d14848;
+    background-color: #9bd64f;
     padding: 10px 20px;
     color: #fff;
     border: none;
@@ -74,7 +74,7 @@ button {
 }
 
 button:hover {
-    background-color: #e24040;
+    background-color: #82cf1d;
 }
 
 @media (max-width: 600px) {
@@ -107,8 +107,8 @@ button:hover {
 <body>
     <div class="container">
         <h1>Thank You!</h1>
-        <p>You have reached the end. Thank you for completing the Django survey.</p>
-        <button onclick="window.location.href='{% url 'polls:home_redirect' %}'">Restart Survey</button>
+        <p>You have reached the end. Thank you for completing Student feedback Survey by SurveyParrots.</p>
+        <button onclick="window.location.href='{% url 'polls:home_page' %}'">Home</button>
     </div>
 </body>
 </html>

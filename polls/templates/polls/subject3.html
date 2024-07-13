@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Django Survey By SurveyParrots</title>
+  <title>Student feedback app by SurveyParrots - DCS</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="{% static 'stylesmain.css' %}">
 </head>
@@ -10,8 +10,8 @@
 <body>
 
 <div class="container">
-  <h1>Django Survey By SurveyParrots</h1><br>
-  <form action="{% url 'polls:submit4' %}" method="post">
+  <h1>DCS</h1><br>
+  <form action="{% url 'polls:submit3' %}" method="post">
     {% csrf_token %}
     {% for question in questions %}
     <fieldset>

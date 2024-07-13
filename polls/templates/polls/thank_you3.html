@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="container">
-    <h1>Answers for Part 3 submitted</h1>
+    <h1>Feedback for DCS has been Submitted</h1>
     {% for response_summary in responses_summary %}
     <div class="question-summary">
         <h4>{{ response_summary.question.question_text }}</h4>
@@ -23,7 +23,7 @@
         </ul>
     </div>
     {% endfor %}
-    <button onclick="window.location.href='{% url 'polls:questions4' %}'">Next</button>
+    <button onclick="window.location.href='{% url 'polls:subject4' %}'">Next</button>
 </div>
 </body>
 </html>

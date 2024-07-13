@@ -1,0 +1,50 @@
+<title></title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page - Student feedback app by SurveyParrots</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            text-align: center;
+            padding: 20px;
+        }
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .button-container button {
+            margin: 10px;
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #9bd64f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .button-container button:hover {
+            background-color: #85d41e;
+        }
+    </style>
+</head>
+<body>
+    <div class="button-container">
+      
+      <form action="{% url 'polls:subject1' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Semester II Feedback</button>
+    </form>
+    
+    <form action="{% url 'polls:clginfra' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">College Infrastructure Feedback</button>
+    </form>
+    </div>
+</body>
+</html>
