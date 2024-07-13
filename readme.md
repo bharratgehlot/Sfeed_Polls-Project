@@ -26,10 +26,14 @@ To run this project locally, follow these steps:
 - python manage.py migrate
 - python manage.py runserver
 
-##
+## Contact
 Repository URL - https://github.com/bharratgehlot/Sfeed_Polls-Project
 
-1. **Clone the repository:**
-   ```bash
-   git clone <repository-url>
-   cd sfeed_project
+## Features to be added
+
+ - One should able to fill survey many times but his/her vote should not be included after one try
+ - Design set of 25 questions about collegue infrasturcture
+ - Design set of 20 question about placement
+ - Design set of 20 questions for alumanies.
+ - Design set of 20 questions for financal related stuff
+ - Change to more appealing layout
