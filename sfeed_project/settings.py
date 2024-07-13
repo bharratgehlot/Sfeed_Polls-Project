@@ -64,12 +64,29 @@ WSGI_APPLICATION = "sfeed_project.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+
+# For SQLite3
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+'''
+# For Postgres
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'sfeed_project',        # Your database name
+        'USER': 'sfeed_admin',      # Your database user
+        'PASSWORD': '12345678',  # Your database password
+        'HOST': 'localhost',       # Set to empty string for localhost
+        'PORT': '5432',            # Default PostgreSQL port
+    }
+}
+
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 

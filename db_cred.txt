@@ -1,0 +1,6 @@
+postgres super user password = 12345678
+port = 5432
+
+username = sfeed_admin
+password = 12345678
+db name = sfeed_project
