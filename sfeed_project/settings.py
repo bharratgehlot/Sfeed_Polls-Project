@@ -6,7 +6,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 #Deployment Envionment Settings
-'''
+
 SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
@@ -17,7 +17,7 @@ ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
 SECRET_KEY = ("SECRET_KEY")
 DEBUG = False
 ALLOWED_HOSTS = ['*']
-
+'''
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -65,28 +65,7 @@ WSGI_APPLICATION = "sfeed_project.wsgi.application"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 
-# For SQLite3
-'''
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
 
-# For Postgres
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME'),
-        'USER': os.getenv('DB_USER'),
-        'PASSWORD': os.getenv('DB_PASSWORD'),
-        'HOST': os.getenv('DB_HOST'),
-        'PORT': os.getenv('DB_PORT', '5432'),
-    }
-}
-'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -130,7 +109,7 @@ USE_I18N = True
 USE_TZ = True
 
 #For Development # Static files (CSS, JavaScript, Images)
-
+'''
 STATIC_URL = "/static/"
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 STATICFILES_DIRS = [BASE_DIR / 'polls/static']
@@ -139,10 +118,9 @@ STATICFILES_DIRS = [BASE_DIR / 'polls/static']
 '''
 STATIC_URL = "/static/"
 os.path.join(BASE_DIR, 'staticfiles')
-
 #STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-'''
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
