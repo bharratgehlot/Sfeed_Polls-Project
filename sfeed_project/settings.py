@@ -15,8 +15,8 @@ ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
 #Development Envionment Settings
 '''
 SECRET_KEY = ("SECRET_KEY")
-DEBUG = True
-ALLOWED_HOSTS = []
+DEBUG = False
+ALLOWED_HOSTS = ['*']
 
 
 INSTALLED_APPS = [
@@ -73,19 +73,31 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-'''
+
 # For Postgres
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'sfeed_project',        # Your database name
-        'USER': 'sfeed_admin',      # Your database user
-        'PASSWORD': '12345678',  # Your database password
-        'HOST': 'localhost',       # Set to empty string for localhost
-        'PORT': '5432',            # Default PostgreSQL port
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT', '5432'),
     }
 }
+'''
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'verceldb',
+        'USER': 'default',
+        'PASSWORD': 'SudsAaFN4c8o',
+        'HOST': 'ep-shy-cell-a4b05nt6-pooler.us-east-1.aws.neon.tech',
+        'PORT': '5432',
+    }
+}
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -126,7 +138,9 @@ STATICFILES_DIRS = [BASE_DIR / 'polls/static']
 # For Deployment # Static files (CSS, JavaScript, Images)
 '''
 STATIC_URL = "/static/"
-STATIC_ROOT = BASE_DIR / "staticfiles"
+os.path.join(BASE_DIR, 'staticfiles')
+
+#STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 '''
 
