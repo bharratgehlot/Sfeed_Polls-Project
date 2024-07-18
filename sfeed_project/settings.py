@@ -16,8 +16,7 @@ ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
 '''
 SECRET_KEY = ("SECRET_KEY")
 DEBUG = False
-ALLOWED_HOSTS = ['.vercel.app','now.sh']
-
+ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app', '.now.sh']
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -117,8 +116,7 @@ STATICFILES_DIRS = [BASE_DIR / 'polls/static']
 # For Deployment # Static files (CSS, JavaScript, Images)
 '''
 STATIC_URL = "/static/"
-os.path.join(BASE_DIR, 'staticfiles')
-STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 
