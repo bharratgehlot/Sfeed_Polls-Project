@@ -6,7 +6,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 #Deployment Envionment Settings
-
+'''
 SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
@@ -16,8 +16,8 @@ ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
 '''
 SECRET_KEY = ("SECRET_KEY")
 DEBUG = False
-ALLOWED_HOSTS = ['*']
-'''
+ALLOWED_HOSTS = ['.vercel.app','build.sh']
+
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -118,7 +118,7 @@ STATICFILES_DIRS = [BASE_DIR / 'polls/static']
 '''
 STATIC_URL = "/static/"
 os.path.join(BASE_DIR, 'staticfiles')
-#STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 
