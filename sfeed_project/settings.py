@@ -16,7 +16,7 @@ ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
 '''
 SECRET_KEY = ("SECRET_KEY")
 DEBUG = False
-ALLOWED_HOSTS = ['.vercel.app','build.sh']
+ALLOWED_HOSTS = ['.vercel.app','now.sh']
 
 
 INSTALLED_APPS = [
