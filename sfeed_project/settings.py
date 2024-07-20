@@ -6,7 +6,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 #Deployment Envionment Settings
-'''
+
 SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
@@ -15,8 +15,9 @@ ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
 #Development Envionment Settings
 '''
 SECRET_KEY = ("SECRET_KEY")
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app', '.now.sh']
+'''
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -63,7 +64,7 @@ WSGI_APPLICATION = "sfeed_project.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-
+#Vercel
 
 DATABASES = {
     'default': {
@@ -75,8 +76,21 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+'''
+#LOCAL
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'sfeed_project',
+        'USER': 'sfeed_admin',
+        'PASSWORD': '12345678',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
 
+'''
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 

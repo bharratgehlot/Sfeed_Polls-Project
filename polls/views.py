@@ -7,14 +7,11 @@ import uuid
 def home_page(request):
     return render(request, 'polls/home_page.html')
 
-
 def subject1(request):
     question_list = Question.objects.all()[:10]  # Get the first 10 questions only
     context = {'questions': question_list}
     return render(request, 'polls/subject1.html', context)
 
-
-@require_http_methods(["POST"])
 def submit(request):
     # Generate a unique user identifier
     user, created = User.objects.get_or_create(username=str(uuid.uuid4()))
@@ -28,7 +25,6 @@ def submit(request):
             response.save()
     
     return redirect('polls:thank_you')
-
 
 def thank_you(request):
     questions = Question.objects.all()[:10]
