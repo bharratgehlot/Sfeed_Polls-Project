@@ -27,7 +27,7 @@ def submit(request):
     return redirect('polls:thank_you')
 
 def thank_you(request):
-    questions = Question.objects.all()[:10]
+    questions = Question.objects.all()[10:15]
     responses_summary = []
 
     for question in questions:
@@ -53,7 +53,7 @@ def thank_you(request):
 
     return render(request, 'polls/thank_you.html', {'responses_summary': responses_summary})
 
-
+'''
 #Code for second template questions2.html
 
 def subject2(request):
@@ -292,6 +292,7 @@ def thank_you6(request):
         })
 
     return render(request, 'polls/thank_you6.html', {'responses_summary': responses_summary})
+'''
 
 def SurveryCompleted(request):
     return render(request, 'polls/SurveryCompleted.html')

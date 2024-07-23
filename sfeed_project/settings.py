@@ -4,18 +4,17 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 #Vercel Envionment Settings
-
+'''
 SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(",")
-
 
 #Local Envionment Settings
 '''
 SECRET_KEY = ("SECRET_KEY")
 DEBUG = True
 ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app', '.now.sh']
-'''
+
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -135,7 +134,7 @@ USE_I18N = True
 USE_TZ = True
 
 #For Local # Static files (CSS, JavaScript, Images)
-'''
+
 STATIC_URL = "/static/"
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 STATICFILES_DIRS = [BASE_DIR / 'polls/static']
@@ -145,5 +144,5 @@ STATICFILES_DIRS = [BASE_DIR / 'polls/static']
 STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
+'''
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
