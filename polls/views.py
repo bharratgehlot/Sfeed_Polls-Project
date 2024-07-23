@@ -151,11 +151,11 @@ def thank_you3(request):
 
     return render(request, 'polls/thank_you3.html', {'responses_summary': responses_summary})
 
-'''
+
 #Code for fourth template questions4.html
 
 def subject4(request):
-    question_list = Question.objects.all()[30:40] #from 5 to 10
+    question_list = Question.objects.all()[15:20] #from 5 to 10
     context = {'questions': question_list}
     return render(request,'polls/subject4.html', context)
 
@@ -164,7 +164,7 @@ def submit4(request):
     user, created = User.objects.get_or_create(username=str(uuid.uuid4()))
 
     # Process each question and selected choice
-    for question in Question.objects.all()[30:40]:  # Handle responses for the next 5 questions
+    for question in Question.objects.all()[15:20]:  # Handle responses for the next 5 questions
         choice_id = request.POST.get(f'question_{question.id}')
         if choice_id:
             choice = get_object_or_404(Choice, pk=choice_id)
@@ -174,7 +174,7 @@ def submit4(request):
     return redirect('polls:thank_you4')
 
 def thank_you4(request):
-    questions = Question.objects.all()[30:40]
+    questions = Question.objects.all()[15:20]
     responses_summary = []
 
     for question in questions:
@@ -203,15 +203,14 @@ def thank_you4(request):
 #Code for fifth template questions5.html
 
 def subject5(request):
-    question_list = Question.objects.all()[40:50]
+    question_list = Question.objects.all()[20:25]
     context = {'questions': question_list}
     return render(request, 'polls/subject5.html', context)
 
-@require_http_methods(["POST"])
 def submit5(request):
     user, created = User.objects.get_or_create(username=str(uuid.uuid4()))
 
-    for question in Question.objects.all()[40:50]:
+    for question in Question.objects.all()[20:25]:
         choice_id = request.POST.get(f'question_{question.id}')
         if choice_id:
             choice = get_object_or_404(Choice, pk=choice_id)
@@ -221,7 +220,7 @@ def submit5(request):
     return redirect('polls:thank_you5')
 
 def thank_you5(request):
-    questions = Question.objects.all()[40:50]
+    questions = Question.objects.all()[20:25]
     responses_summary = []
 
     for question in questions:
@@ -250,7 +249,7 @@ def thank_you5(request):
 #Code for fifth template questions5.html
 
 def subject6(request):
-    question_list = Question.objects.all()[50:60]
+    question_list = Question.objects.all()[25:30]
     context = {'questions': question_list}
     return render(request, 'polls/subject6.html', context)
 
@@ -258,7 +257,7 @@ def subject6(request):
 def submit6(request):
     user, created = User.objects.get_or_create(username=str(uuid.uuid4()))
 
-    for question in Question.objects.all()[50:60]:
+    for question in Question.objects.all()[25:30]:
         choice_id = request.POST.get(f'question_{question.id}')
         if choice_id:
             choice = get_object_or_404(Choice, pk=choice_id)
@@ -268,7 +267,7 @@ def submit6(request):
     return redirect('polls:thank_you6')
 
 def thank_you6(request):
-    questions = Question.objects.all()[50:60]
+    questions = Question.objects.all()[25:30]
     responses_summary = []
 
     for question in questions:
@@ -293,6 +292,7 @@ def thank_you6(request):
         })
 
     return render(request, 'polls/thank_you6.html', {'responses_summary': responses_summary})
+'''
 '''
 
 def SurveryCompleted(request):
