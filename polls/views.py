@@ -57,7 +57,7 @@ def thank_you(request):
 #Code for second template questions2.html
 
 def subject2(request):
-    question_list = Question.objects.all()[6:10] 
+    question_list = Question.objects.all()[5:10] 
     context = {'questions': question_list}
     return render(request,'polls/subject2.html', context)
 
@@ -66,7 +66,7 @@ def submit2(request):
     user, created = User.objects.get_or_create(username=str(uuid.uuid4()))
 
     # Process each question and selected choice
-    for question in Question.objects.all()[6:10]: 
+    for question in Question.objects.all()[5:10]: 
         choice_id = request.POST.get(f'question_{question.id}')
         if choice_id:
             choice = get_object_or_404(Choice, pk=choice_id)
@@ -76,7 +76,7 @@ def submit2(request):
     return redirect('polls:thank_you2')
 
 def thank_you2(request):
-    questions = Question.objects.all()[6:10]
+    questions = Question.objects.all()[5:10]
     responses_summary = []
 
     for question in questions:
@@ -101,12 +101,12 @@ def thank_you2(request):
         })
 
     return render(request, 'polls/thank_you2.html', {'responses_summary': responses_summary})
-'''
+
 
 #Code for third template questions2.html
 
 def subject3(request):
-    question_list = Question.objects.all()[20:30] #from 5 to 10
+    question_list = Question.objects.all()[10:15] #from 5 to 10
     context = {'questions': question_list}
     return render(request,'polls/subject3.html', context)
 
@@ -115,7 +115,7 @@ def submit3(request):
     user, created = User.objects.get_or_create(username=str(uuid.uuid4()))
 
     # Process each question and selected choice
-    for question in Question.objects.all()[20:30]:  # Handle responses for the next 5 questions
+    for question in Question.objects.all()[10:15]:  # Handle responses for the next 5 questions
         choice_id = request.POST.get(f'question_{question.id}')
         if choice_id:
             choice = get_object_or_404(Choice, pk=choice_id)
@@ -125,7 +125,7 @@ def submit3(request):
     return redirect('polls:thank_you3')
 
 def thank_you3(request):
-    questions = Question.objects.all()[20:30]
+    questions = Question.objects.all()[10:15]
     responses_summary = []
 
     for question in questions:
@@ -151,7 +151,7 @@ def thank_you3(request):
 
     return render(request, 'polls/thank_you3.html', {'responses_summary': responses_summary})
 
-
+'''
 #Code for fourth template questions4.html
 
 def subject4(request):
