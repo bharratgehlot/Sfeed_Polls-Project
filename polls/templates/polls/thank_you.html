@@ -23,7 +23,8 @@
                 </ul>
             </div>
         {% endfor %}
-        <button onclick="window.location.href='{% url 'polls:subject2' %}'">Next</button>
+        <a href="{% url 'polls:subject2' %}">Next</a>
+
     </div>
 </body>
 </html>
