@@ -34,16 +34,10 @@
 </head>
 <body>
     <div class="button-container">
-      
       <form action="{% url 'polls:subject1' %}" method="get">
-        {% csrf_token %}
         <button type="submit">Semester II Feedback</button>
     </form>
-    
-    <a href="{% url 'polls:subject1' %}">Go to Subject 1 Feedback</a>
-
     <form action="{% url 'polls:clginfra' %}" method="get">
-        {% csrf_token %}
         <button type="submit">College Infrastructure Feedback</button>
     </form>
     </div>
