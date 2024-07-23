@@ -53,11 +53,11 @@ def thank_you(request):
 
     return render(request, 'polls/thank_you.html', {'responses_summary': responses_summary})
 
-'''
+
 #Code for second template questions2.html
 
 def subject2(request):
-    question_list = Question.objects.all()[10:20] 
+    question_list = Question.objects.all()[6:10] 
     context = {'questions': question_list}
     return render(request,'polls/subject2.html', context)
 
@@ -66,7 +66,7 @@ def submit2(request):
     user, created = User.objects.get_or_create(username=str(uuid.uuid4()))
 
     # Process each question and selected choice
-    for question in Question.objects.all()[10:20]: 
+    for question in Question.objects.all()[6:10]: 
         choice_id = request.POST.get(f'question_{question.id}')
         if choice_id:
             choice = get_object_or_404(Choice, pk=choice_id)
@@ -76,7 +76,7 @@ def submit2(request):
     return redirect('polls:thank_you2')
 
 def thank_you2(request):
-    questions = Question.objects.all()[10:20]
+    questions = Question.objects.all()[6:10]
     responses_summary = []
 
     for question in questions:
@@ -101,6 +101,7 @@ def thank_you2(request):
         })
 
     return render(request, 'polls/thank_you2.html', {'responses_summary': responses_summary})
+'''
 
 #Code for third template questions2.html
 
