@@ -8,7 +8,7 @@ def home_page(request):
     return render(request, 'polls/home_page.html')
 
 def subject1(request):
-    question_list = Question.objects.all()[:10]  # Get the first 10 questions only
+    question_list = Question.objects.all()[10:15]  # Get the first 10 questions only
     context = {'questions': question_list}
     return render(request, 'polls/subject1.html', context)
 
@@ -17,7 +17,7 @@ def submit(request):
     user, created = User.objects.get_or_create(username=str(uuid.uuid4()))
 
     # Process each question and selected choice
-    for question in Question.objects.all()[:10]:
+    for question in Question.objects.all()[10:15]:
         choice_id = request.POST.get(f'question_{question.id}')
         if choice_id:
             choice = get_object_or_404(Choice, pk=choice_id)
