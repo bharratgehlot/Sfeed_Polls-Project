@@ -11,7 +11,7 @@
 
 <div class="container">
   <h1>Python (PSPP) </h1><br>
-  <form action="{% url 'polls:submit' %}" method="post">
+  <form action="{% url 'polls:submit1' %}" method="post">
     {% csrf_token %}
     {% for question in questions %}
     <fieldset>

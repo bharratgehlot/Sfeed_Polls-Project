@@ -1,273 +1,70 @@
-from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Question, Choice, User, Responses
-from django.views.decorators.http import require_http_methods
 import uuid
-
 
 def home_page(request):
     return render(request, 'polls/home_page.html')
 
-def subject1(request):
-    question_list = Question.objects.all()[0:5]  # Get the first 10 questions only
+def subject(request, start, end, template_name):
+    question_list = Question.objects.all()[start:end]
     context = {'questions': question_list}
-    return render(request, 'polls/subject1.html', context)
+    return render(request, f'polls/{template_name}', context)
 
-def submit(request):
-    # Generate a unique user identifier
-    user, created = User.objects.get_or_create(username=str(uuid.uuid4()))
-
-    # Process each question and selected choice
-    for question in Question.objects.all()[0:5]:
-        choice_id = request.POST.get(f'question_{question.id}')
-        if choice_id:
-            choice = get_object_or_404(Choice, pk=choice_id)
-            response = Responses(user=user, question=question, choice=choice)
-            response.save()
-    
-    return redirect('polls:thank_you')
-
-def thank_you(request):
-    questions = Question.objects.all()[0:5]
-    responses_summary = []
-
-    for question in questions:
-        choices = question.choice_set.all()
-        response_count = {}
-        
-        max_count = 0
-        most_selected_choice_text = ''
-
-        for choice in choices:
-            count = Responses.objects.filter(question=question, choice=choice).count()
-            response_count[choice.choice_text] = count
-            
-            if count > max_count:
-                max_count = count
-                most_selected_choice_text = choice.choice_text
-        
-        responses_summary.append({
-            'question': question,
-            'response_count': response_count,
-            'most_selected_choice_text': most_selected_choice_text
-        })
-
-    return render(request, 'polls/thank_you.html', {'responses_summary': responses_summary})
-
-
-#Code for second template questions2.html
+def subject1(request):
+    return subject(request, 0, 5, 'subject1.html')
 
 def subject2(request):
-    question_list = Question.objects.all()[5:10] 
-    context = {'questions': question_list}
-    return render(request,'polls/subject2.html', context)
-
-def submit2(request):
-    # Generate a unique user identifier
-    user, created = User.objects.get_or_create(username=str(uuid.uuid4()))
-
-    # Process each question and selected choice
-    for question in Question.objects.all()[5:10]: 
-        choice_id = request.POST.get(f'question_{question.id}')
-        if choice_id:
-            choice = get_object_or_404(Choice, pk=choice_id)
-            response = Responses(user=user, question=question, choice=choice)
-            response.save()
-
-    return redirect('polls:thank_you2')
-
-def thank_you2(request):
-    questions = Question.objects.all()[5:10]
-    responses_summary = []
-
-    for question in questions:
-        choices = question.choice_set.all()
-        response_count = {}
-        
-        max_count = 0
-        most_selected_choice_text = ''
-
-        for choice in choices:
-            count = Responses.objects.filter(question=question, choice=choice).count()
-            response_count[choice.choice_text] = count
-            
-            if count > max_count:
-                max_count = count
-                most_selected_choice_text = choice.choice_text
-        
-        responses_summary.append({
-            'question': question,
-            'response_count': response_count,
-            'most_selected_choice_text': most_selected_choice_text
-        })
-
-    return render(request, 'polls/thank_you2.html', {'responses_summary': responses_summary})
-
-
-#Code for third template questions2.html
+    return subject(request, 5, 10, 'subject2.html')
 
 def subject3(request):
-    question_list = Question.objects.all()[10:15] #from 5 to 10
-    context = {'questions': question_list}
-    return render(request,'polls/subject3.html', context)
-
-def submit3(request):
-    # Generate a unique user identifier
-    user, created = User.objects.get_or_create(username=str(uuid.uuid4()))
-
-    # Process each question and selected choice
-    for question in Question.objects.all()[10:15]:  # Handle responses for the next 5 questions
-        choice_id = request.POST.get(f'question_{question.id}')
-        if choice_id:
-            choice = get_object_or_404(Choice, pk=choice_id)
-            response = Responses(user=user, question=question, choice=choice)
-            response.save()
-
-    return redirect('polls:thank_you3')
-
-def thank_you3(request):
-    questions = Question.objects.all()[10:15]
-    responses_summary = []
-
-    for question in questions:
-        choices = question.choice_set.all()
-        response_count = {}
-        
-        max_count = 0
-        most_selected_choice_text = ''
-
-        for choice in choices:
-            count = Responses.objects.filter(question=question, choice=choice).count()
-            response_count[choice.choice_text] = count
-            
-            if count > max_count:
-                max_count = count
-                most_selected_choice_text = choice.choice_text
-        
-        responses_summary.append({
-            'question': question,
-            'response_count': response_count,
-            'most_selected_choice_text': most_selected_choice_text
-        })
-
-    return render(request, 'polls/thank_you3.html', {'responses_summary': responses_summary})
-
-
-#Code for fourth template questions4.html
+    return subject(request, 10, 15, 'subject3.html')
 
 def subject4(request):
-    question_list = Question.objects.all()[15:20] #from 5 to 10
-    context = {'questions': question_list}
-    return render(request,'polls/subject4.html', context)
-
-def submit4(request):
-    # Generate a unique user identifier
-    user, created = User.objects.get_or_create(username=str(uuid.uuid4()))
-
-    # Process each question and selected choice
-    for question in Question.objects.all()[15:20]:  # Handle responses for the next 5 questions
-        choice_id = request.POST.get(f'question_{question.id}')
-        if choice_id:
-            choice = get_object_or_404(Choice, pk=choice_id)
-            response = Responses(user=user, question=question, choice=choice)
-            response.save()
-
-    return redirect('polls:thank_you4')
-
-def thank_you4(request):
-    questions = Question.objects.all()[15:20]
-    responses_summary = []
-
-    for question in questions:
-        choices = question.choice_set.all()
-        response_count = {}
-        
-        max_count = 0
-        most_selected_choice_text = ''
-
-        for choice in choices:
-            count = Responses.objects.filter(question=question, choice=choice).count()
-            response_count[choice.choice_text] = count
-            
-            if count > max_count:
-                max_count = count
-                most_selected_choice_text = choice.choice_text
-        
-        responses_summary.append({
-            'question': question,
-            'response_count': response_count,
-            'most_selected_choice_text': most_selected_choice_text
-        })
-
-    return render(request, 'polls/thank_you4.html', {'responses_summary': responses_summary})
-
-#Code for fifth template questions5.html
+    return subject(request, 15, 20, 'subject4.html')
 
 def subject5(request):
-    question_list = Question.objects.all()[20:25]
-    context = {'questions': question_list}
-    return render(request, 'polls/subject5.html', context)
-
-def submit5(request):
-    user, created = User.objects.get_or_create(username=str(uuid.uuid4()))
-
-    for question in Question.objects.all()[20:25]:
-        choice_id = request.POST.get(f'question_{question.id}')
-        if choice_id:
-            choice = get_object_or_404(Choice, pk=choice_id)
-            response = Responses(user=user, question=question, choice=choice)
-            response.save()
-
-    return redirect('polls:thank_you5')
-
-def thank_you5(request):
-    questions = Question.objects.all()[20:25]
-    responses_summary = []
-
-    for question in questions:
-        choices = question.choice_set.all()
-        response_count = {}
-        
-        max_count = 0
-        most_selected_choice_text = ''
-
-        for choice in choices:
-            count = Responses.objects.filter(question=question, choice=choice).count()
-            response_count[choice.choice_text] = count
-            
-            if count > max_count:
-                max_count = count
-                most_selected_choice_text = choice.choice_text
-        
-        responses_summary.append({
-            'question': question,
-            'response_count': response_count,
-            'most_selected_choice_text': most_selected_choice_text
-        })
-
-    return render(request, 'polls/thank_you5.html', {'responses_summary': responses_summary})
-
-#Code for fifth template questions5.html
+    return subject(request, 20, 25, 'subject5.html')
 
 def subject6(request):
-    question_list = Question.objects.all()[25:30]
-    context = {'questions': question_list}
-    return render(request, 'polls/subject6.html', context)
+    return subject(request, 25, 30, 'subject6.html')
 
-@require_http_methods(["POST"])
-def submit6(request):
-    user, created = User.objects.get_or_create(username=str(uuid.uuid4()))
-
-    for question in Question.objects.all()[25:30]:
+def submit(request, user, start, end, thank_you_url):
+    for question in Question.objects.all()[start:end]:
         choice_id = request.POST.get(f'question_{question.id}')
         if choice_id:
             choice = get_object_or_404(Choice, pk=choice_id)
             response = Responses(user=user, question=question, choice=choice)
             response.save()
+    return redirect(thank_you_url, user_id=user.id)
 
-    return redirect('polls:thank_you6')
+def submit1(request):
+    user, created = User.objects.get_or_create(username=str(uuid.uuid4()))
+    request.session['user_id'] = user.id
+    return submit(request, user, 0, 5, 'polls:thank_you1')
 
-def thank_you6(request):
-    questions = Question.objects.all()[25:30]
+def submit2(request):
+    user = get_object_or_404(User, pk=request.session.get('user_id'))
+    return submit(request, user, 5, 10, 'polls:thank_you2')
+
+def submit3(request):
+    user = get_object_or_404(User, pk=request.session.get('user_id'))
+    return submit(request, user, 10, 15, 'polls:thank_you3')
+
+def submit4(request):
+    user = get_object_or_404(User, pk=request.session.get('user_id'))
+    return submit(request, user, 15, 20, 'polls:thank_you4')
+
+def submit5(request):
+    user = get_object_or_404(User, pk=request.session.get('user_id'))
+    return submit(request, user, 20, 25, 'polls:thank_you5')
+
+def submit6(request):
+    user = get_object_or_404(User, pk=request.session.get('user_id'))
+    return submit(request, user, 25, 30, 'polls:thank_you6')
+
+def thank_you(request, user_id, start, end, template_name):
+    user = get_object_or_404(User, pk=user_id)
+    questions = Question.objects.all()[start:end]
     responses_summary = []
 
     for question in questions:
@@ -291,12 +88,28 @@ def thank_you6(request):
             'most_selected_choice_text': most_selected_choice_text
         })
 
-    return render(request, 'polls/thank_you6.html', {'responses_summary': responses_summary})
-'''
-'''
+    return render(request, f'polls/{template_name}', {'responses_summary': responses_summary})
 
-def SurveryCompleted(request):
-    return render(request, 'polls/SurveryCompleted.html')
-    
+def thank_you1(request, user_id):
+    return thank_you(request, user_id, 0, 5, 'thank_you1.html')
+
+def thank_you2(request, user_id):
+    return thank_you(request, user_id, 5, 10, 'thank_you2.html')
+
+def thank_you3(request, user_id):
+    return thank_you(request, user_id, 10, 15, 'thank_you3.html')
+
+def thank_you4(request, user_id):
+    return thank_you(request, user_id, 15, 20, 'thank_you4.html')
+
+def thank_you5(request, user_id):
+    return thank_you(request, user_id, 20, 25, 'thank_you5.html')
+
+def thank_you6(request, user_id):
+    return thank_you(request, user_id, 25, 30, 'thank_you6.html')
+  
+def survey_completed(request):
+    return render(request, 'polls/survey_completed.html')
+
 def clginfra(request):
     return render(request, 'polls/clginfra.html')
