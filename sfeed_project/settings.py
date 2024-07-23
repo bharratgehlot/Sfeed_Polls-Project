@@ -63,7 +63,7 @@ WSGI_APPLICATION = "sfeed_project.wsgi.application"
 
 
 #LOCAL
-
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -74,7 +74,6 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-
 '''
 DATABASES = {
     'default': {
@@ -88,23 +87,6 @@ DATABASES = {
 }
 
 
-POSTGRES_USER = os.getenv('POSTGRES_USER', 'default')
-POSTGRES_PASSWORD = os.getenv('POSTGRES_PASSWORD', 'SudsAaFN4c8o')
-POSTGRES_HOST = os.getenv('POSTGRES_HOST', 'ep-shy-cell-a4b05nt6-pooler.us-east-1.aws.neon.tech')
-POSTGRES_DATABASE = os.getenv('POSTGRES_DATABASE', 'verceldb')
-
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': POSTGRES_DATABASE,
-        'USER': POSTGRES_USER,
-        'PASSWORD': POSTGRES_PASSWORD,
-        'HOST': POSTGRES_HOST,
-        'PORT': '5432',
-    }
-}
-'''
 
 AUTH_PASSWORD_VALIDATORS = [
     {
