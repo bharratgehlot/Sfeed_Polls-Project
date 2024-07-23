@@ -75,7 +75,7 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-
+'''
 
 DATABASES = {
     'default': {
@@ -105,7 +105,7 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-
+'''
 
 AUTH_PASSWORD_VALIDATORS = [
     {
