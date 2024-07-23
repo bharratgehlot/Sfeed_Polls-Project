@@ -75,11 +75,8 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-
 '''
 
-#Vercel
-'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -90,7 +87,7 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-'''
+
 
 POSTGRES_USER = os.getenv('POSTGRES_USER', 'default')
 POSTGRES_PASSWORD = os.getenv('POSTGRES_PASSWORD', 'SudsAaFN4c8o')
