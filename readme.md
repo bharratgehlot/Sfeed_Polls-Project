@@ -38,4 +38,4 @@ Repository URL - https://github.com/bharratgehlot/Sfeed_Polls-Project
  - Design set of 20 questions for financal related stuff
  - Change to more appealing layout
 
-##I have stopped working on this to focus on other projects  
+## I have stopped working on this to focus on other projects  
